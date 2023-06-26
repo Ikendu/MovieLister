@@ -1,54 +1,31 @@
+import { useEffect } from 'react';
 import './App.css';
-import {useState, useEffect} from 'react';
+import SearchIcon from './search.svg';
 
-const Person = (props) => {
-  return (
-    <>
-      <h1> Name: {props.name}</h1>
-      <h3>Level: {props.level}</h3>
-      <p>Age: {props.age}</p>
-      <p>Marital Status: {props.status}</p>
-    </>
-  )
+const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=e213675b'
+
+const App = () => {
+    const searchMovies = async (title) => {
+        const response = await fetch(`${API_URL}&s=${title}`);
+        const data = await response.json();
+
+        console.log(data.Search);
+    }
+
+    useEffect(() => {
+        searchMovies('Nigeria');
+
+    }, []);
+
+    return (
+        <div className="app">
+            <h1>MovieLife</h1>
+
+            <div className="search">
+                <input value="Nigeria Movie" onChange={() => {}} />
+                <img src={SearchIcon} alt='search'/>
+            </div>
+        </div>
+    )
 }
-
-const CounterButton = () => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    alert("You have changed the code to" +counter)
-  }, [counter])
-  
-  return (
-    <>
-      <button onClick={() => {setCounter((next) => next + 1)}}>+</button>
-      <h1>{counter}</h1>
-      <button onClick={() => {setCounter( (prev) => prev - 1)}} >-</button>
-    </>
-  )
-  
-}
-
-
-const App = () => {  
-  const name = "Chibundu";
-  return (
-  <>
-    <div className='App'>
-     <CounterButton/>
-          
-      <Person name="Gifty Love" level='Graduate' age={26} status='Married'/>
-      <Person name={"Chibundu"} level={"Graduate"} age={32} status={"Maried"} />
-      <Person name={"Akuoma"} level={"Nursery"} age={2} status={"Baby"} />
-    </div>
-
-    <div className="App">
-      <h1>Hello {name}, </h1>
-      {name ? (<>{name} is a good name</>) : (<h2>You have not given your name</h2>)}      
-    </div>
-    </>
-  );
-  
-}
-
 export default App;
