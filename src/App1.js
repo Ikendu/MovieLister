@@ -4,12 +4,12 @@ import {useState, useEffect} from 'react';
 
 const Person = (props) => {
   return (
-    <>
-      <h1> Name: {props.name}</h1>
+    <div className='container'>
       <h3>Level: {props.level}</h3>
       <p>Age: {props.age}</p>
       <p>Marital Status: {props.status}</p>
-    </>
+      <h1> Name: {props.name}</h1>
+    </div>
   )
 }
 

@@ -21,7 +21,6 @@ const App = () => {
 
     useEffect(() => {
         searchMovies('Nigeria');
-
     }, []);
 
     return (
