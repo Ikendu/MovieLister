@@ -17,14 +17,15 @@ const CounterButton = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    alert("You have changed the code to" +counter)
-  }, [counter])
+    setCounter(100)
+  }, [])
   
   return (
     <>
-      <button onClick={() => {setCounter((next) => next + 1)}}>+</button>
+      <button onClick={() => {setCounter((next) => next+1 )}}>+</button>
       <h1>{counter}</h1>
-      <button onClick={() => {setCounter( (prev) => prev - 1)}} >-</button>
+      <button onClick={() => {setCounter( (prev) => prev - 1)}} >-</button><br />
+      <button onClick={() => setCounter(100)} >return</button>
     </>
   )
   
