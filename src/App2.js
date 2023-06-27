@@ -24,7 +24,7 @@ const MyButton = () => {
     return (
         <>
             <button onClick={handleButton}>clicked {count} times</button><br />
-            <button onClick={resetCount}>Reset</button>
+            <button onClick={resetCount}>Reset</button><br />
         </>
     )
         
@@ -39,6 +39,7 @@ const App = () => {
             <button>I am a button</button><br />
             <button>I am 2nd button</button>
             <MyProducts />
+            <MyButton/>
             <MyButton/>
         </>
     )
