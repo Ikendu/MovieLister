@@ -1,5 +1,4 @@
-import React from 'react';
-import './index.css';
+import {useState} from 'react';
 import './App.css'
 
 const products = [
@@ -8,9 +7,27 @@ const products = [
     { title: 'Apple', id: 3 },
   ];
 const MyProducts = () => {
-    const productNames = products.map(product => <li key={product.id} 
-        style={{color: product.id === 1? 'magenta' : 'white'}}>{product.title}</li>)
-    return (<ul>{productNames}</ul>)
+    const myLists = products.map(product => <li style={{color: product.id===1? 'magenta':"white"}}
+    key={product.id}>{product.title}</li>)
+    return (<ul>{myLists}</ul>)
+}
+
+const MyButton = () => {
+    const [count, setCount] = useState(0);
+
+    const handleButton = () => {
+       setCount(count + 1)
+    }
+    const resetCount = () => {
+        setCount(0)
+    }
+    return (
+        <>
+            <button onClick={handleButton}>clicked {count} times</button><br />
+            <button onClick={resetCount}>Reset</button>
+        </>
+    )
+        
 }
 
 const App = () => {
@@ -22,6 +39,7 @@ const App = () => {
             <button>I am a button</button><br />
             <button>I am 2nd button</button>
             <MyProducts />
+            <MyButton/>
         </>
     )
 }
