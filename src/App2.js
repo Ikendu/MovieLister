@@ -12,24 +12,53 @@ const MyProducts = () => {
     return (<ul>{myLists}</ul>)
 }
 
-const MyButton = () => {
+
+
+const AllClick = () => {
     const [count, setCount] = useState(0);
 
     const handleButton = () => {
-       setCount(count + 1)
+        setCount(count + 1)
     }
-    const resetCount = () => {
+
+    const resetClick = () => {
+        setCount(0)
+    }
+    
+    return (
+        <>
+            <MyButton onClick={handleButton} count={count} prop="Clicked No."/>
+            <MyButton onClick={handleButton} count={count} prop="2nd Clicked No."/>
+            <MyButton onClick={resetClick} prop="Reset"/>
+        </>
+    )
+}
+
+const MyButton = ({count, onClick, prop}) => {    
+    return <>
+            <button onClick={onClick}>{prop} {count}</button><br />
+           </>
+           
+}
+
+
+const LoneButton = () => {
+    const [count, setCount] = useState(0);
+
+    const handleClick = () => {
+        setCount(count + 1)
+    }
+    const resetClick = () => {
         setCount(0)
     }
     return (
-        <>
-            <button onClick={handleButton}>clicked {count} times</button><br />
-            <button onClick={resetCount}>Reset</button><br />
-        </>
-    )
+    <>
+        <button onClick={handleClick}>Clicked {count} times</button> <br />
+        <button onClick={resetClick}>Reset</button>
+    </>
         
+    )
 }
-
 const App = () => {
     return (
         <>
@@ -39,8 +68,10 @@ const App = () => {
             <button>I am a button</button><br />
             <button>I am 2nd button</button>
             <MyProducts />
-            <MyButton/>
-            <MyButton/>
+            <AllClick />
+            <LoneButton/>
+            <br />
+            <LoneButton/>
         </>
     )
 }
