@@ -1,15 +1,22 @@
 import {useState} from 'react';
+import './styles.css'
 
 function Square({ value, onSquareClick }){  
  return <button className="square" onClick={onSquareClick} >{value}</button>
 }
 
 export default function Board() {
-  const [squares, setSqures] = useState(Array(9).fill(null))
+  const [squares, setSquares] = useState(Array(9).fill(null))
+
+  const handleClick = () => {
+    const nextSquare = squares.splice();
+    nextSquare[0] = "X";
+    setSquares(nextSquare);
+  }
   return (
   <>
     <div className="board-row">
-        <Square value={squares[0]} onSqareClick={handleClick} />
+        <Square value={squares[0]} onSquareClick={handleClick} />
         <Square value={squares[1]}/>
         <Square value={squares[2]}/>
     </div>
