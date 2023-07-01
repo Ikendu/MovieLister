@@ -25,15 +25,27 @@ class App extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit} >
-                <input onChange={this.handleChange} value={this.state.input} />
-                <input type='submit'/>
+                    <input onChange={this.handleChange} value={this.state.input} />
+                    <input type='submit'/>
                 </form>
                 <h2>User input is displayed below</h2>
                 <h3>{this.state.input}</h3>
+                <h3>Display below after submitting</h3>
                 <h1>{this.state.submit}</h1>
+                <Navibar name={this.state.submit}/>
             </div>
         )
     }
 };
+class Navibar extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <h2>Username: {this.props.name}</h2>
+        )
+    }
+}
 
 export default App;
