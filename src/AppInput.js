@@ -40,10 +40,27 @@ class App extends React.Component {
 class Navibar extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = {
+        activeUsers: null
+        }
     }
+    componentDidMount(){
+        setTimeout(() => {
+            this.setState({
+                activeUsers: 202000
+            })   
+        }, 2500 )
+        
+    }
+    
     render(){
         return(
+        <>
             <h2>Username: {this.props.name}</h2>
+            <p>Active Users: {this.state.activeUsers}</p>
+        </>
+            
         )
     }
 }
