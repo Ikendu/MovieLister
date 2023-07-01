@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 
 class App extends React.Component {
     constructor(props){
