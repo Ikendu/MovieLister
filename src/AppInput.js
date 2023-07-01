@@ -74,9 +74,9 @@ class Displayit extends React.Component{
     }   
 
      handleDisplay() {
-        this.setState({
-            display: !this.state.display
-        })
+        this.setState((state) => ({
+            display: !state.display
+        }))
     }
     render(){
         if(this.state.display){
