@@ -36,6 +36,7 @@ class App extends React.Component {
 
                 <Displayit />
                 <DisplayitII />
+                <UseTernary />
             </div>
         )
     }
@@ -118,6 +119,43 @@ class DisplayitII extends React.Component{
         </>
         )
     }      
+}
+
+class UseTernary extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            input: '', userAge: ''
+        }
+        this.submit = this.submit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+    submit(){
+        this.setState(state => ({
+            userAge: state.input
+        }))
+    }
+    handleChange(event){
+        this.setState({
+            input: event.target.value, 
+            userAge: ''
+        })
+    }
+
+    render(){
+        const submitButton = <button onClick={this.submit}>Submit</button>;
+        const buttonLess = <button>You shall not enter</button>;
+        const buttonUp = <button>Go inside</button>;
+
+        return(
+            <>
+                <input onChange={this.handleChange} value={this.state.input} type='number'  />
+                <br />
+                {this.state.userAge === '' ? submitButton : this.state.userAge < 18 ? buttonLess : buttonUp}
+            </>
+            
+        )
+    }
 }
 
 export default App;
