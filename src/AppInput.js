@@ -34,7 +34,9 @@ class App extends React.Component {
                 <h3>Display below after submitting</h3>
                 <h1>{this.state.submit}</h1>
                 <Navibar name={this.state.submit}/>
+
                 <Displayit />
+                <DisplayitII />
             </div>
         )
     }
@@ -94,8 +96,29 @@ class Displayit extends React.Component{
             )
         }
     }
-    
+}
+class DisplayitII extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+        display: true
+        }
+        this.handleDisplay = this.handleDisplay.bind(this);
+    }   
 
+     handleDisplay() {
+        this.setState({
+            display: !this.state.display
+        })
+    }
+    render(){
+        return(
+        <>
+            <button onClick={this.handleDisplay}>Toggle Display</button>
+            {this.state.display && <h1>I'm Up here</h1>}
+        </>
+        )
+    }      
 }
 
 export default App;
