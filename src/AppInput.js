@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 class App extends React.Component {
     constructor(props){
@@ -33,6 +34,7 @@ class App extends React.Component {
                 <h3>Display below after submitting</h3>
                 <h1>{this.state.submit}</h1>
                 <Navibar name={this.state.submit}/>
+                <Displayit />
             </div>
         )
     }
@@ -50,10 +52,8 @@ class Navibar extends React.Component{
             this.setState({
                 activeUsers: 202000
             })   
-        }, 2500 )
-        
-    }
-    
+        }, 2500 )        
+    }    
     render(){
         return(
         <>
@@ -63,6 +63,39 @@ class Navibar extends React.Component{
             
         )
     }
+}
+class Displayit extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+        display: true
+        }
+        this.handleDisplay = this.handleDisplay.bind(this);
+    }   
+
+     handleDisplay() {
+        this.setState({
+            display: !this.state.display
+        })
+    }
+    render(){
+        if(this.state.display){
+        return(
+        <>
+            <button onClick={this.handleDisplay}>Remove</button>
+            <h1>I'm Up here</h1>
+        </>
+        )
+        } else {
+            return(
+            <>
+                <button onClick={this.handleDisplay}> Display</button>
+            </>
+            )
+        }
+    }
+    
+
 }
 
 export default App;
