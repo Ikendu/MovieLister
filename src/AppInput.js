@@ -176,9 +176,9 @@ class GameOfChance extends React.Component {
       this.handleClick = this.handleClick.bind(this);  
     }
     handleClick(){
-        this.setState({
+        this.setState((state) => ({
             counter: this.state.counter + 1
-        })
+        }))
     }    
     render(){
     const expression = Math.random() >= 0.5;
@@ -187,6 +187,7 @@ class GameOfChance extends React.Component {
                 <h3>Click to Play game</h3>
                 <button onClick={this.handleClick} >Click here</button>
                 <Result fiftyFifty={expression} />
+                <h4>Turn Played: {this.state.counter}</h4>
                 
 
             </div>
