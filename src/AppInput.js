@@ -66,6 +66,7 @@ class Navibar extends React.Component{
         )
     }
 }
+//Display based on state update
 class Displayit extends React.Component{
     constructor(props){
         super(props);
@@ -97,6 +98,8 @@ class Displayit extends React.Component{
         }
     }
 }
+
+//Display when clicked and remove on another click using conditional && operator
 class DisplayitII extends React.Component{
     constructor(props){
         super(props);
@@ -121,6 +124,7 @@ class DisplayitII extends React.Component{
     }      
 }
 
+//using ternary operator to run display based on age condition
 class UseTernary extends React.Component{
     constructor(props){
         super(props);
