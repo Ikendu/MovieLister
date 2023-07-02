@@ -41,10 +41,13 @@ class App extends React.Component {
                 <UseTernary />
                 <hr />
                 <GameOfChance />
+                <hr />
+                <ChangeStyle />
             </div>
         )
     }
 };
+
 class Navibar extends React.Component{
     constructor(props){
         super(props);
@@ -171,13 +174,15 @@ class GameOfChance extends React.Component {
     constructor(props){
       super(props)
       this.state = {
-        counter: 1
+        counter: 0,
+        doubleCouter: 0
       }
       this.handleClick = this.handleClick.bind(this);  
     }
     handleClick(){
         this.setState((state) => ({
-            counter: this.state.counter + 1
+            counter: this.state.counter + 1,
+            doubleCouter: this.state.doubleCouter + 2
         }))
     }    
     render(){
@@ -188,6 +193,7 @@ class GameOfChance extends React.Component {
                 <button onClick={this.handleClick} >Click here</button>
                 <Result fiftyFifty={expression} />
                 <h4>Turn Played: {this.state.counter}</h4>
+                <h4>Turn Played: {this.state.doubleCouter}</h4>
                 
 
             </div>
@@ -201,6 +207,41 @@ class Result extends React.Component{
     render(){
         return(
             <h1>Result: {this.props.fiftyFifty? 'You Win': 'You Lose'}</h1>
+        )
+    }
+}
+
+//Change stlye based on {input} condition
+class ChangeStyle extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            input: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+    handleChange(event){
+        this.setState({
+            input: event.target.value
+        })
+    }
+    render(){
+        const setStyle = {
+            border: "1px solid black"
+        }
+        if(this.state.input.length > 10){
+            setStyle.border = '3px solid red';
+        }
+        return(
+            <>
+                <h2>Enter input not more than 20 character</h2>
+                <input 
+                type='text'
+                style={setStyle}
+                value={this.state.input}
+                onChange={this.handleChange} />
+                <p>{this.state.input.length > 20? 'Maximum entry exceeded': 'Entry within range' }</p>
+            </>
         )
     }
 }
