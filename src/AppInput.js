@@ -33,10 +33,14 @@ class App extends React.Component {
                 <h3>Display below after submitting</h3>
                 <h1>{this.state.submit}</h1>
                 <Navibar name={this.state.submit}/>
-
+                <hr />
                 <Displayit />
+                <hr />
                 <DisplayitII />
+                <hr />
                 <UseTernary />
+                <hr />
+                <GameOfChance />
             </div>
         )
     }
@@ -158,6 +162,44 @@ class UseTernary extends React.Component{
                 {this.state.userAge === '' ? submitButton : this.state.userAge < 18 ? buttonLess : buttonUp}
             </>
             
+        )
+    }
+}
+
+//make decisions condtionary based on props passed
+class GameOfChance extends React.Component {
+    constructor(props){
+      super(props)
+      this.state = {
+        counter: 1
+      }
+      this.handleClick = this.handleClick.bind(this);  
+    }
+    handleClick(){
+        this.setState({
+            counter: this.state.counter + 1
+        })
+    }    
+    render(){
+    const expression = Math.random() >= 0.5;
+        return(
+            <div>
+                <h3>Click to Play game</h3>
+                <button onClick={this.handleClick} >Click here</button>
+                <Result fiftyFifty={expression} />
+                
+
+            </div>
+        )
+    }    
+}
+class Result extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <h1>Result: {this.props.fiftyFifty? 'You Win': 'You Lose'}</h1>
         )
     }
 }
