@@ -48,6 +48,8 @@ class App extends React.Component {
                     <TodoList />
                     <hr />
                     <OnlineUsers />
+                    <hr />
+                    <AddToList />
             </div>
         )
     }
@@ -354,7 +356,8 @@ class AddToList extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            input: '', messages: []
+            input: '', 
+            messages: []
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -365,11 +368,26 @@ class AddToList extends React.Component{
         })
     }
     handleClick(){
-        const allMessage = [this.state.messages, this.state.input]
+        const allMessage = [...this.state.messages, this.state.input]
         this.setState({
             input: '',
             messages: allMessage
         })
+    }
+    render(){
+        return(
+            <div>
+                <h3>Enter new item to add to list</h3>
+                <input 
+                value={this.state.input}
+                onChange={this.handleChange}
+                placeholder='Enter item here'
+                />
+                <br />
+                <button onClick={this.handleClick}>Submt</button>
+                <ul>{this.state.messages.map((text, index) => <li key={index}>{text}</li>)}</ul>
+            </div>
+        )
     }
 }
 
