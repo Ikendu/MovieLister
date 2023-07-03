@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css'
 
 class App extends React.Component {
     constructor(props){
@@ -24,27 +25,29 @@ class App extends React.Component {
     render(){
         return(
             <div>
-                <form onSubmit={this.handleSubmit} >
-                    <input onChange={this.handleChange} value={this.state.input} />
-                    <input type='submit'/>
-                </form>
-                <h2>User input is displayed below</h2>
-                <h3>{this.state.input}</h3>
-                <h3>Display below after submitting</h3>
-                <h1>{this.state.submit}</h1>
-                <Navibar name={this.state.submit}/>
-                <hr />
-                <Displayit />
-                <hr />
-                <DisplayitII />
-                <hr />
-                <UseTernary />
-                <hr />
-                <GameOfChance />
-                <hr />
-                <ChangeStyle />
-                <hr />
-                <TodoList />
+                    <form onSubmit={this.handleSubmit} >
+                        <input onChange={this.handleChange} value={this.state.input} />
+                        <input type='submit'/>
+                    </form>
+                    <h2>User input is displayed below</h2>
+                    <h3>{this.state.input}</h3>
+                    <h3>Display below after submitting</h3>
+                    <h1>{this.state.submit}</h1>
+                    <Navibar name={this.state.submit}/>
+                    <hr />
+                    <Displayit />
+                    <hr />
+                    <DisplayitII />
+                    <hr />
+                    <UseTernary />
+                    <hr />
+                    <GameOfChance />
+                    <hr />
+                    <ChangeStyle />
+                    <hr />
+                    <TodoList />
+                    <hr />
+                    <OnlineUsers />
             </div>
         )
     }
@@ -283,6 +286,46 @@ class TodoList extends React.Component{
                 <ul>{items}</ul>
             </>
             
+        )
+    }
+}
+
+class OnlineUsers extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            users: [
+                {
+                    username: 'Chibundu', 
+                    online: true
+                },
+                {
+                    username: 'Onyiyechi',
+                    online: true
+                },
+                {
+                    username: 'David',
+                    online: false
+                },
+                {
+                    username: 'Gift',
+                    online: false
+                },
+                {
+                    username: 'Akuoma',
+                    online: true
+                }
+            ]
+        }
+    }
+    render(){
+        const onlineUsers = this.state.users.filter(user => user.online);
+        const listUsers = onlineUsers.map((user, index) => <li key={index}>{user.username}</li>)
+        return(
+            <div>
+                <h2>Online Users</h2>
+                <ul>{listUsers}</ul>
+            </div>
         )
     }
 }
