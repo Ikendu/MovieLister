@@ -290,7 +290,7 @@ class TodoList extends React.Component{
         )
     }
 }
-
+//List "Online" users {total number and names}
 class OnlineUsers extends React.Component{
     constructor(props){
         super(props);
@@ -346,6 +346,30 @@ class OnlineUsers extends React.Component{
 
             </div>
         )
+    }
+}
+
+//enter text and add to list of array
+class AddToList extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            input: '', messages: []
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+    handleChange(event){
+        this.setState({
+            input: event.target.value
+        })
+    }
+    handleClick(){
+        const allMessage = [this.state.messages, this.state.input]
+        this.setState({
+            input: '',
+            messages: allMessage
+        })
     }
 }
 
