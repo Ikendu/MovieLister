@@ -270,7 +270,7 @@ class TodoList extends React.Component{
         })
     }
     render(){
-        const items = this.state.todoList.map(item => <li>{item}</li>)
+        const items = this.state.todoList.map((item, index ) => <li key={index}>{item}</li>)
         return(
             <>               
                 <h3>Enter Your Todo List here</h3>
@@ -280,7 +280,7 @@ class TodoList extends React.Component{
                 />
                 <br/>
                 <button onClick={this.handleSubmit}>Create List</button>
-                <p><ul>{items}</ul></p>
+                <ul>{items}</ul>
             </>
             
         )
