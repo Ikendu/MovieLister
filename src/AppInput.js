@@ -43,6 +43,8 @@ class App extends React.Component {
                 <GameOfChance />
                 <hr />
                 <ChangeStyle />
+                <hr />
+                <TodoList />
             </div>
         )
     }
@@ -242,6 +244,45 @@ class ChangeStyle extends React.Component{
                 onChange={this.handleChange} />
                 <p>{this.state.input.length > 20? 'Maximum entry exceeded': 'Entry within range' }</p>
             </>
+        )
+    }
+}
+
+//Todo list section with Array.slit() and Array.map
+class TodoList extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            userInput: '', todoList: []
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(event){
+        this.setState({
+           userInput: event.target.value 
+        })
+    }
+    handleSubmit(){
+        const itemArray = this.state.userInput.split(',')
+        this.setState({
+            todoList: itemArray
+        })
+    }
+    render(){
+        const items = this.state.todoList.map(item => <li>{item}</li>)
+        return(
+            <>               
+                <h3>Enter Your Todo List here</h3>
+                <textarea
+                value={this.state.userInput} 
+                onChange={this.handleChange}
+                />
+                <br/>
+                <button onClick={this.handleSubmit}>Create List</button>
+                <p><ul>{items}</ul></p>
+            </>
+            
         )
     }
 }
