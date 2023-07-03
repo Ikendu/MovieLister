@@ -321,10 +321,16 @@ class OnlineUsers extends React.Component{
     render(){
         const onlineUsers = this.state.users.filter(user => user.online);
         const listUsers = onlineUsers.map((user, index) => <li key={index}>{user.username}</li>)
+        const numUsers = onlineUsers.length
         return(
             <div>
-                <h2>Online Users</h2>
+                <div className='online'>
+                    <h2>Online Users</h2>
+                    <p>{numUsers}</p>
+                </div>
+                
                 <ul>{listUsers}</ul>
+
             </div>
         )
     }
