@@ -278,6 +278,7 @@ class TodoList extends React.Component{
             <>               
                 <h3>Enter Your Todo List here</h3>
                 <textarea
+                placeholder='Seperate list with comma'
                 value={this.state.userInput} 
                 onChange={this.handleChange}
                 />
@@ -314,7 +315,19 @@ class OnlineUsers extends React.Component{
                 {
                     username: 'Akuoma',
                     online: true
-                }
+                },
+                {
+                   username: 'Jeff',
+                   online: true
+                },
+                {
+                  username: 'Alan',
+                  online: false
+                },
+                {
+                  username: 'Mary',
+                  online: true
+                },
             ]
         }
     }
