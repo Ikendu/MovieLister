@@ -13,6 +13,11 @@ altKey: Alt (or Opt for Mac)
 ctrlKey: Ctrl
 metaKey: Cmd for Mac
 
+e?.key === `Enter`
+
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
+https://www.w3schools.com/jsref/obj_mouseevent.asp
+
 <button id="button">Alt+Shift+Click on me!</button>
 
 <script>
