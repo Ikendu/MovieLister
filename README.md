@@ -1,3 +1,28 @@
+NOTES:
+https://javascript.info/mouse-events-basics
+
+Button state ---------------------event.button
+Left button (primary)------------- 0
+Middle button (auxiliary)--------- 1
+Right button (secondary)---------- 2  
+X1 button (back)------------------ 3
+X2 button (forward)--------------- 4
+
+shiftKey: Shift
+altKey: Alt (or Opt for Mac)
+ctrlKey: Ctrl
+metaKey: Cmd for Mac
+
+<button id="button">Alt+Shift+Click on me!</button>
+
+<script>
+  button.onclick = function(event) {
+    if (event.altKey && event.shiftKey) {
+      alert('Hooray!');
+    }
+  };
+</script>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +93,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# React_App_dev" 
+"# React_App_dev"
